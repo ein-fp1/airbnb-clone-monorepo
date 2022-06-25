@@ -8,6 +8,7 @@
     "build": "turbo run build",
     "dev": "turbo run dev --no-cache --parallel --continue",
     "dev:storybook": "turbo run dev --scope='docs'",
+    "dev:airbnb-clone-webapp": "turbo run dev --scope='airbnb-clone-webapp'",
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",

@@ -1,28 +1,44 @@
 module.exports = {
-  extends: ['next', 'prettier', 'airbnb', 'plugin:storybook/recommended'],
-  plugins: ['prettier'],
+  parser: '@typescript-eslint/parser',
+  extends: [
+    'next',
+    'prettier',
+    'airbnb',
+    'plugin:storybook/recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
+  plugins: ['prettier', '@typescript-eslint'],
   rules: {
     '@next/next/no-html-link-for-pages': 'off',
     'react/jsx-key': 'off',
     'prettier/prettier': 'error',
+    'react/button-has-type': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/jsx-filename-extension': [
+      'error',
+      { extensions: ['.tsx', '.jsx', 'spec.js'] },
+    ],
     'import/no-extraneous-dependencies': [
       'error',
       {
-        devDependencies: [
-          '**/*.stories.tsx',
-          '**/*.@(spec|test).@(js|ts)?(x)',
-          '**/jest.setup.ts',
-          '**/.storybook/*.@(js|ts)?(x)',
-          '**/webpack.*.js',
-          '**/script/*.js',
-          '**/mocks/**/*.@(js|ts)?(x)',
-        ],
+        devDependencies: true,
+      },
+    ],
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        mjs: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
       },
     ],
     semi: 0,
     'comma-dangle': 'off',
     'no-new': 0,
-    'import/extensions': 'off',
     'unicorn/number-literal-case': 'off',
     'object-curly-newline': 0,
     'import/prefer-default-export': 'off',
@@ -45,6 +61,13 @@ module.exports = {
         ],
       },
     ],
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.ts', '.tsx'],
+      },
+    },
   },
   overrides: [
     {
